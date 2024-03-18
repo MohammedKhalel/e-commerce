@@ -48,7 +48,7 @@ router.post('/order',auth,async(req,res)=>{
         res.status(400).send(e)
     }
 })
-// Only Admin can delete order //  wnat to make sure products is return to product fiedls and after post delete spesific quantatiy from products
+// Only Admin can delete order 
 router.delete('/order/delete/:id',Admin,async(req,res)=>{
     try{
         await Order.findByIdAndDelete(req.params.id)

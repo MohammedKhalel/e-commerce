@@ -24,13 +24,6 @@ const cartSchema = new mongoose.Schema({
 
 cartSchema.pre('save',async function (){})
 
-// cartSchema.methods.FindProductId = async(productID)=>{
-// const product = await Cart.findOne({'products.productID':productID})
-// if(!product){
-//     throw new Error("Product not found")
-// }
-// return product
-// }
 
 const Cart = mongoose.model('Cart',cartSchema) 
 

@@ -32,7 +32,7 @@ router.post('/products',Admin,upload.single('image'),async(req,res)=>{
 })
 // update product 
 router.patch('/products/update/:id',Admin,upload.single('image'),async(req,res)=>{
-    const updates = Object.keys(req.body) // || Object.keys(req.file) 
+    const updates = Object.keys(req.body) 
     try{
         const product = await Product.findById(req.params.id)
         if (req.file) {
@@ -43,7 +43,6 @@ router.patch('/products/update/:id',Admin,upload.single('image'),async(req,res)=
             if (update !== 'image') {
                 product[update] = req.body[update];
             }
-            // product[update]=req.body[update]
         })
         await product.save()
         res.status(200).send(product)

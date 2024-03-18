@@ -33,37 +33,7 @@ router.post('/cart/:prodtid', auth, async (req, res) => {
     }
 });
 
-// add product to cart 
-// router.post('/cart/:prodtid', auth, async (req, res) => {
-//     const productId = req.params.prodtid;
-//     const quantity = parseInt(req.body.quantity);
 
-//     if (!productId) {
-//         return res.status(400).send({ error: 'productId is required.' });
-//     }
-
-//     try {
-//         let cart = await Cart.findOne({ owner: req.user.id }).populate('products.productId')
-
-//         if (!cart) {
-//             cart = new Cart({ owner: req.user.id, products: [{ productId, quantity }] })
-//             await cart.populate('products.productId').execPopulate(); // Populate the newly added Product before saving
-//         } else {
-//             let existingProduct = cart.products.find(product => product.productId.toString() === productId);
-
-//             if (existingProduct) {
-//                 existingProduct.quantity += quantity;
-//             } else {
-//                 cart.products.push({ productId, quantity });
-//             }
-//         }
-
-//         await cart.save();
-//         res.status(201).send(cart);
-//     } catch (err) {
-//         res.status(400).send({ error: err.message });
-//     }
-// });
 
 // wnat to make user read his own cart 
 router.get('/user/mycart',auth,async(req,res)=>{
