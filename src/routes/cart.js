@@ -37,8 +37,8 @@ router.post('/cart/:prodtid', auth, async (req, res) => {
 
 // wnat to make user read his own cart 
 router.get('/user/mycart',auth,async(req,res)=>{
-    const mycart = await Cart.find({owner:req.user.id}).populate('products.productId')
     try{
+        const mycart = await Cart.find({owner:req.user.id}).populate('products.productId')
         res.status(200).send(mycart)
     }catch(e){
         res.status(403).send(e)
